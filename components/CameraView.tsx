@@ -149,13 +149,16 @@ const CameraView: React.FC<CameraViewProps> = ({ isCameraOn, movementName, onFee
           if (overlayCtx) {
               drawPose(overlayCtx, analysisResult.pose, analysisResult.feedback);
           }
+      } else if (overlayCanvasRef.current) {
+          const overlayCtx = overlayCanvasRef.current.getContext('2d');
+          overlayCtx?.clearRect(0,0, overlayCanvasRef.current.width, overlayCanvasRef.current.height);
       }
   }, [analysisResult]);
 
 
   return (
     <div className="bg-gray-900 rounded-2xl shadow-lg p-2 flex flex-col items-center justify-center relative aspect-[4/3] w-full max-w-2xl mx-auto">
-      <captureCanvasRef ref={captureCanvasRef} className="hidden"></captureCanvasRef>
+      <canvas ref={captureCanvasRef} className="hidden"></canvas>
       {isCameraOn ? (
         <div className="relative w-full h-full">
           <video ref={videoRef} autoPlay playsInline className="w-full h-full rounded-lg object-cover" muted></video>
