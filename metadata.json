@@ -1,0 +1,7 @@
+{
+  "name": "GERAK LOKOMOTOR PJOK KELAS 1",
+  "description": "An interactive physical education app for first graders to learn and practice locomotor movements with AI-powered feedback using the device's camera.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
